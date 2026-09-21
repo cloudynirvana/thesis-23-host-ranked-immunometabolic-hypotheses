@@ -1,0 +1,501 @@
+{
+  "seed": 20260921,
+  "theta": {
+    "r": 0.3,
+    "K": 1.2,
+    "kappa": 0.5,
+    "sigma": 0.12,
+    "delta": 0.25,
+    "pi": 0.7,
+    "lam": 0.55
+  },
+  "theta_canonical": "{\"K\":1.2,\"delta\":0.25,\"kappa\":0.5,\"lam\":0.55,\"pi\":0.7,\"r\":0.3,\"sigma\":0.12}",
+  "theta_digest": "cf5be3430e25f75d9f87810c789195a3225388b0a9973de7970ec3890a70313e",
+  "theta_digest_before_guard": "cf5be3430e25f75d9f87810c789195a3225388b0a9973de7970ec3890a70313e",
+  "theta_digest_unchanged": true,
+  "ranker_reads_theta": false,
+  "forbidden_keys_absent_from_theta": [
+    "phi",
+    "L_lo",
+    "L_hi",
+    "sigma_host",
+    "checkpoint",
+    "k_inf",
+    "k_host",
+    "W_I",
+    "W_M",
+    "E_lac",
+    "E_ck",
+    "E_sup"
+  ],
+  "ledger": {
+    "phi": 0.55,
+    "sigma_host": 0.2,
+    "L_lo": 0.0,
+    "L_hi": 0.45,
+    "checkpoint": "present",
+    "band": "tight"
+  },
+  "windows": {
+    "W_I": {
+      "lo": 1.5,
+      "hi": 2.5,
+      "label": "infection"
+    },
+    "W_M": {
+      "lo": 10.0,
+      "hi": 12.0,
+      "label": "marrow_stress"
+    }
+  },
+  "immuno_evidence": [
+    "E_lac",
+    "E_ck",
+    "E_sup"
+  ],
+  "structures": [
+    {
+      "id": "U0",
+      "name": "open_baseline",
+      "immuno_slots": [],
+      "window_slots": [],
+      "inside_lactate_band": true,
+      "within_supply_budget": true,
+      "checkpoint_ok": true
+    },
+    {
+      "id": "U1",
+      "name": "lactate_masked",
+      "immuno_slots": [
+        "E_lac",
+        "E_sup"
+      ],
+      "window_slots": [],
+      "inside_lactate_band": true,
+      "within_supply_budget": true,
+      "checkpoint_ok": true
+    },
+    {
+      "id": "U2",
+      "name": "checkpoint_scaled",
+      "immuno_slots": [
+        "E_lac",
+        "E_ck",
+        "E_sup"
+      ],
+      "window_slots": [],
+      "inside_lactate_band": true,
+      "within_supply_budget": true,
+      "checkpoint_ok": true
+    },
+    {
+      "id": "U3",
+      "name": "windowed_checkpoint",
+      "immuno_slots": [
+        "E_lac",
+        "E_ck",
+        "E_sup"
+      ],
+      "window_slots": [
+        "W_I",
+        "W_M"
+      ],
+      "inside_lactate_band": true,
+      "within_supply_budget": true,
+      "checkpoint_ok": true
+    },
+    {
+      "id": "U4",
+      "name": "band_bypass",
+      "immuno_slots": [
+        "E_ck"
+      ],
+      "window_slots": [
+        "W_I",
+        "W_M"
+      ],
+      "inside_lactate_band": false,
+      "within_supply_budget": true,
+      "checkpoint_ok": true
+    }
+  ],
+  "rank_key": [
+    "admissible before inadmissible",
+    "fewer unhosted host windows",
+    "fewer unhosted immunometabolic evidence objects",
+    "fewer slots",
+    "structure id"
+  ],
+  "schedules": {
+    "immuno_only": {
+      "window_ids": [],
+      "primary_order": [
+        "U2",
+        "U3",
+        "U1",
+        "U0",
+        "U4"
+      ],
+      "immuno_terms_only_order": [
+        "U2",
+        "U3",
+        "U1",
+        "U0",
+        "U4"
+      ],
+      "windows_as_tiebreak_order": [
+        "U2",
+        "U3",
+        "U1",
+        "U0",
+        "U4"
+      ],
+      "window_only_order": [
+        "U0",
+        "U1",
+        "U2",
+        "U4",
+        "U3"
+      ],
+      "rows": [
+        {
+          "id": "U2",
+          "name": "checkpoint_scaled",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [
+            "E_lac",
+            "E_ck",
+            "E_sup"
+          ],
+          "window_slots": [],
+          "n_slots": 3,
+          "unexplained_immuno": [],
+          "n_unexplained_immuno": 0,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 1
+        },
+        {
+          "id": "U3",
+          "name": "windowed_checkpoint",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [
+            "E_lac",
+            "E_ck",
+            "E_sup"
+          ],
+          "window_slots": [
+            "W_I",
+            "W_M"
+          ],
+          "n_slots": 5,
+          "unexplained_immuno": [],
+          "n_unexplained_immuno": 0,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 2
+        },
+        {
+          "id": "U1",
+          "name": "lactate_masked",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [
+            "E_lac",
+            "E_sup"
+          ],
+          "window_slots": [],
+          "n_slots": 2,
+          "unexplained_immuno": [
+            "E_ck"
+          ],
+          "n_unexplained_immuno": 1,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 3
+        },
+        {
+          "id": "U0",
+          "name": "open_baseline",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [],
+          "window_slots": [],
+          "n_slots": 0,
+          "unexplained_immuno": [
+            "E_lac",
+            "E_ck",
+            "E_sup"
+          ],
+          "n_unexplained_immuno": 3,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 4
+        },
+        {
+          "id": "U4",
+          "name": "band_bypass",
+          "admissible": false,
+          "reasons": [
+            "lactate_outside_host_band"
+          ],
+          "immuno_slots": [
+            "E_ck"
+          ],
+          "window_slots": [
+            "W_I",
+            "W_M"
+          ],
+          "n_slots": 3,
+          "unexplained_immuno": [
+            "E_lac",
+            "E_sup"
+          ],
+          "n_unexplained_immuno": 2,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 5
+        }
+      ]
+    },
+    "host": {
+      "window_ids": [
+        "W_I",
+        "W_M"
+      ],
+      "primary_order": [
+        "U3",
+        "U2",
+        "U1",
+        "U0",
+        "U4"
+      ],
+      "immuno_terms_only_order": [
+        "U2",
+        "U3",
+        "U1",
+        "U0",
+        "U4"
+      ],
+      "windows_as_tiebreak_order": [
+        "U2",
+        "U3",
+        "U1",
+        "U0",
+        "U4"
+      ],
+      "window_only_order": [
+        "U4",
+        "U3",
+        "U0",
+        "U1",
+        "U2"
+      ],
+      "rows": [
+        {
+          "id": "U3",
+          "name": "windowed_checkpoint",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [
+            "E_lac",
+            "E_ck",
+            "E_sup"
+          ],
+          "window_slots": [
+            "W_I",
+            "W_M"
+          ],
+          "n_slots": 5,
+          "unexplained_immuno": [],
+          "n_unexplained_immuno": 0,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 1
+        },
+        {
+          "id": "U2",
+          "name": "checkpoint_scaled",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [
+            "E_lac",
+            "E_ck",
+            "E_sup"
+          ],
+          "window_slots": [],
+          "n_slots": 3,
+          "unexplained_immuno": [],
+          "n_unexplained_immuno": 0,
+          "unexplained_windows": [
+            "W_I",
+            "W_M"
+          ],
+          "n_unexplained_windows": 2,
+          "rank": 2
+        },
+        {
+          "id": "U1",
+          "name": "lactate_masked",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [
+            "E_lac",
+            "E_sup"
+          ],
+          "window_slots": [],
+          "n_slots": 2,
+          "unexplained_immuno": [
+            "E_ck"
+          ],
+          "n_unexplained_immuno": 1,
+          "unexplained_windows": [
+            "W_I",
+            "W_M"
+          ],
+          "n_unexplained_windows": 2,
+          "rank": 3
+        },
+        {
+          "id": "U0",
+          "name": "open_baseline",
+          "admissible": true,
+          "reasons": [],
+          "immuno_slots": [],
+          "window_slots": [],
+          "n_slots": 0,
+          "unexplained_immuno": [
+            "E_lac",
+            "E_ck",
+            "E_sup"
+          ],
+          "n_unexplained_immuno": 3,
+          "unexplained_windows": [
+            "W_I",
+            "W_M"
+          ],
+          "n_unexplained_windows": 2,
+          "rank": 4
+        },
+        {
+          "id": "U4",
+          "name": "band_bypass",
+          "admissible": false,
+          "reasons": [
+            "lactate_outside_host_band"
+          ],
+          "immuno_slots": [
+            "E_ck"
+          ],
+          "window_slots": [
+            "W_I",
+            "W_M"
+          ],
+          "n_slots": 3,
+          "unexplained_immuno": [
+            "E_lac",
+            "E_sup"
+          ],
+          "n_unexplained_immuno": 2,
+          "unexplained_windows": [],
+          "n_unexplained_windows": 0,
+          "rank": 5
+        }
+      ]
+    }
+  },
+  "stability": {
+    "immuno_only": {
+      "draws": 200,
+      "discordant": 0,
+      "expected": [
+        "U2",
+        "U3",
+        "U1",
+        "U0",
+        "U4"
+      ]
+    },
+    "host": {
+      "draws": 200,
+      "discordant": 0,
+      "expected": [
+        "U3",
+        "U2",
+        "U1",
+        "U0",
+        "U4"
+      ]
+    }
+  },
+  "name_check": {
+    "status": "NAMES_UNCHANGED",
+    "code": "NO_OP",
+    "illegal_keys": [],
+    "changed_legal_keys": [],
+    "written_theta": {
+      "r": 0.3,
+      "K": 1.2,
+      "kappa": 0.5,
+      "sigma": 0.12,
+      "delta": 0.25,
+      "pi": 0.7,
+      "lam": 0.55
+    },
+    "ranker_called": false
+  },
+  "refusal": {
+    "status": "REFUSED",
+    "code": "ILLEGAL_PROMOTION",
+    "illegal_keys": [
+      "L_hi",
+      "L_lo",
+      "checkpoint",
+      "k_host",
+      "k_inf",
+      "phi",
+      "sigma_host"
+    ],
+    "changed_legal_keys": [
+      "sigma"
+    ],
+    "ranker_called": false,
+    "written_theta": {
+      "r": 0.3,
+      "K": 1.2,
+      "kappa": 0.5,
+      "sigma": 0.12,
+      "delta": 0.25,
+      "pi": 0.7,
+      "lam": 0.55
+    },
+    "mid_I": 2.0,
+    "mid_M": 11.0,
+    "k_inf_fraction": "1/2",
+    "k_host_fraction": "1/9",
+    "proposal_not_a_result": {
+      "r": 0.3,
+      "K": 1.2,
+      "kappa": 0.5,
+      "sigma": 0.2,
+      "delta": 0.25,
+      "pi": 0.7,
+      "lam": 0.55,
+      "phi": 0.55,
+      "L_lo": 0.0,
+      "L_hi": 0.45,
+      "sigma_host": 0.2,
+      "checkpoint": "present",
+      "k_inf": 0.5,
+      "k_host": 0.1111111111111111
+    }
+  },
+  "notes": [
+    "No ODE was integrated.",
+    "No delay graph was propagated.",
+    "Windows and immunometabolic non-parameters stay outside theta.",
+    "Research only. Not a dose."
+  ]
+}
