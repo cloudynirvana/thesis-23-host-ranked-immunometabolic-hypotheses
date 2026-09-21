@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+message: "If you cite this computational research thesis, please use the metadata below. No DOI is minted here; do not invent one."
+type: thesis
+title: "Host infection windows that re-rank immunometabolic hypothesis structures without entering Θ"
+authors:
+  - family-names: Ogbonna
+    given-names: Kelechi Emeka
+    email: kelechiogbonna300@gmail.com
+    alias: cloudynirvana
+abstract: >-
+  Can declared infection/host delay windows change the rank order of
+  immunometabolic hypothesis structures while both the windows and the
+  immunometabolic non-parameters stay outside Θ? Five declared structure
+  records share a frozen kinetic vector of length 7. The ranker does not read
+  it. With an immunometabolic ledger alone the joint key places the
+  checkpoint-scaled record first. Attaching an infection window and a
+  marrow-stress-like window places the windowed checkpoint record first.
+  A key that ignores the windows does not move first place. A window-only
+  sort that drops the lactate-band mask would promote an inadmissible record;
+  the joint key does not. A proposal that writes ledger constants and
+  window-derived keys into Θ is refused, and the SHA-256 digest of Θ is
+  unchanged. Depends on Thesis #10 and Thesis #14. Not a dose. Not a medical device.
+keywords:
+  - immunometabolism
+  - hypothesis rank
+  - host infection window
+  - lactate
+  - checkpoint proxy
+  - non-parameter
+  - refuse-as-parameter
+  - toy model
+  - research-only
+license: MIT
+date-released: "2026-09-21"
+url: "https://github.com/cloudynirvana/thesis-23-host-ranked-immunometabolic-hypotheses"
+repository-code: "https://github.com/cloudynirvana/thesis-23-host-ranked-immunometabolic-hypotheses"
+preferred-citation:
+  type: thesis
+  title: "Host infection windows that re-rank immunometabolic hypothesis structures without entering Θ"
+  authors:
+    - family-names: Ogbonna
+      given-names: Kelechi Emeka
+  year: 2026
+  month: 9
+  url: "https://github.com/cloudynirvana/thesis-23-host-ranked-immunometabolic-hypotheses"
+  notes: "Thesis #23. Depends on Thesis #10 and Thesis #14. Computational research. Joint rank of declared records, not a clinical result. No document DOI."
